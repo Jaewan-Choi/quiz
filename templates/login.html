@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script>  <!-- jquery CDN -->
+</head>
+<body>
+    <section style="width: 200px; height: 200px; display: flex; flex-direction: column;">
+        <input class=email_input style="margin: 10px;">
+        <input class=password_input style="margin: 10px;">
+        <button onclick="register_button()" style="margin: 10px;">회원가입</button>
+        <button onclick="login_button()" style="margin: 10px;">로그인</button>
+    </section>
+</body>
+<script>
+    function login_button() {
+        let uid = $('.email_input').val()
+        let pwd = $('.password_input').val()
+
+        $.ajax({
+            type: 'POST',
+            url: '/login',
+            data: {uid_give:uid, pwd_give:pwd},
+            success: function (response) {
+                alert('로그인 버튼 클릭')
+            }
+        });
+    }
+
+    function register_button() {
+        let uid = $('.email_input').val()
+        let pwd = $('.password_input').val()
+
+        $.ajax({
+            type: 'POST',
+            url: '/join',
+            data: {uid_give:uid, pwd_give:pwd},
+            success: function (response) {
+                alert('회원가입 버튼 클릭')
+            }
+        });
+    }
+
+
+</script>
+</html>
